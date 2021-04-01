@@ -1,0 +1,32 @@
+﻿@model MvcOnlineTicari_Otomasyon.Models.Classes.Product
+@{
+    ViewBag.Title = "NewProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Yeni Ürün Ekleme Sayfası</h2>
+<br />
+<form class="form-group" method="post">
+    @Html.LabelForModel("Ürün Adı")
+    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Marka")
+    @Html.TextBoxFor(x => x.Brand, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Stok Miktarı")
+    @Html.TextBoxFor(x => x.Stock, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Alış Fiyatı")
+    @Html.TextBoxFor(x => x.PurchasePrice, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Satış Fiyatı")
+    @Html.TextBoxFor(x => x.SalePrice, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Kategori")
+    @Html.DropDownListFor(x=>x.CategoryID,(List<SelectListItem>)ViewBag.dgr1,new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Foroğraf")
+    @Html.TextBoxFor(x => x.ProductPhoto, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary">Kaydet</button>
+</form>

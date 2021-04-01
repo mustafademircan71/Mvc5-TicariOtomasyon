@@ -1,0 +1,56 @@
+﻿@using MvcOnlineTicari_Otomasyon.Models.Classes
+@model List<SalesAct>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Satış Hareket Listesi</h2>
+<br />
+<table id="tbl1" class="table table-bordered" style="margin-top:20px;">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Ürün</th>
+            <th>Cari</th>
+            <th>Personel</th>
+            <th>Adet</th>
+            <th>Fiyat</th>
+            <th>Toplam</th>
+            <th>Tarih</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+        </tr>
+    </thead>
+    @foreach (var salesAct in Model)
+    {
+        <tr>
+            <td>@salesAct.SalesActID</td>
+            <td>@salesAct.Product.ProductName</td>
+            <td>@salesAct.Current.CurrentName @salesAct.Current.CurrentSurname</td>
+            <td>@salesAct.Staff.StaffName @salesAct.Staff.StaffSurname</td>
+            <td>@salesAct.Quantity</td>
+            <td>@salesAct.UnitPrice</td>
+            <td>@salesAct.TotalAmount</td>
+            <td>@salesAct.Date</td>
+            <td><a class="btn btn-success" href="/Sale/SalesActDetails/@salesAct.SalesActID">Düzenle</a></td>
+            <td><a class="btn btn-danger" style="background-color:lightcoral;" href="/Sale/DetailsSalesAct/@salesAct.SalesActID">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<a href="/Sale/NewSalesAct" class="btn btn-info">Yeni Satış</a>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+    $('#tbl1').dataTable({});
+</script>

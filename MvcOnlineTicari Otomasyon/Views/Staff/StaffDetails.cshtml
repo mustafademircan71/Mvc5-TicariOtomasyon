@@ -1,0 +1,28 @@
+﻿@model MvcOnlineTicari_Otomasyon.Models.Classes.Staff
+@{
+    ViewBag.Title = "StaffDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<br />
+<h2>Personel Güncellem Sayfası</h2>
+<br />
+@using (Html.BeginForm("UpdateStaff", "Staff", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.HiddenFor(x => x.StaffID)
+    @Html.LabelForModel("Personel Adı")
+    @Html.TextBoxFor(x => x.StaffName, new { @class = "form-control" })
+
+    <br />
+    @Html.LabelForModel("Personel Soyadı")
+    @Html.TextBoxFor(x => x.StaffSurname, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Görsel")
+    @Html.TextBoxFor(x => x.StaffPhoto, new { @class = "form-control" })
+    <br />
+    @Html.LabelForModel("Departman")
+    @Html.DropDownListFor(x => x.DepartmentID, (List<SelectListItem>)ViewBag.dgr2, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-success">Kaydet</button>
+</div>
+}
